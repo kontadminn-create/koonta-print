@@ -1,0 +1,544 @@
+/* Fuentes empaquetadas con la app (ver renderer/fonts/LICENSE-DejaVu.txt):
+   así el panel se ve igual sin importar qué tenga instalado el Windows
+   de cada caja, igual que la webapp con sus fuentes web. */
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("fonts/DejaVuSans.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("fonts/DejaVuSans-Bold.ttf") format("truetype");
+  font-weight: 600 700;
+}
+
+@font-face {
+  font-family: "DejaVu Sans Mono";
+  src: url("fonts/DejaVuSansMono.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "DejaVu Sans Mono";
+  src: url("fonts/DejaVuSansMono-Bold.ttf") format("truetype");
+  font-weight: 600 700;
+}
+
+:root {
+  color-scheme: light;
+  --bg: #F1EFE8;
+  --superficie: #ffffff;
+  --acento: #E4032E;
+  --texto: #111111;
+  --texto-secundario: #8a8a86;
+  --verde: #2F8F5B;
+  --ambar: #B8860B;
+  --borde: rgba(138, 138, 134, 0.24);
+  font-family: "DejaVu Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Los controles de formulario no heredan la tipografía por defecto:
+   sin esto, los botones salen en Arial en vez de DejaVu Sans. */
+button, input {
+  font-family: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--texto);
+  overflow: hidden;
+}
+
+.mono {
+  font-family: "DejaVu Sans Mono", Consolas, "Courier New", monospace;
+}
+
+/* Barra de título propia (la ventana no tiene marco nativo): arrastrable
+   salvo el botón de cerrar, que necesita quedar clicable. */
+.titlebar {
+  -webkit-app-region: drag;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: #1c1c1a;
+}
+
+.titlebar-puntos {
+  display: flex;
+  gap: 6px;
+  /* Decorativo, a propósito: no son controles de ventana reales (no hay
+     nada que minimizar/maximizar), solo la estética del kit visual. */
+  pointer-events: none;
+}
+
+.punto-titulo {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.punto-titulo--roja { background: #ec6a5e; }
+.punto-titulo--ambar { background: #f4bf4f; }
+.punto-titulo--verde { background: #61c454; }
+
+.titlebar-texto {
+  font-size: 12px;
+  color: #cfcfcb;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-cerrar {
+  -webkit-app-region: no-drag;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--texto-secundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-cerrar:hover {
+  background: rgba(228, 3, 46, 0.12);
+  color: var(--acento);
+}
+
+.contenido {
+  padding: 18px 18px 14px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.logo-marca {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--acento);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-texto {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.etiqueta-print {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--texto-secundario);
+  border: 1px solid var(--borde);
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel.oculto {
+  display: none;
+}
+
+/* ---------- Pantalla 1: emparejar ---------- */
+
+.icono-circulo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  color: var(--texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px auto 16px;
+}
+
+.icono-circulo--gris {
+  color: var(--texto-secundario);
+}
+
+.titulo {
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 6px;
+}
+
+.subtitulo {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  text-align: center;
+  margin: 0 0 20px;
+  line-height: 1.4;
+}
+
+.codigo-casillas {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.casilla {
+  width: 15%;
+  aspect-ratio: 1;
+  text-align: center;
+  font-family: "DejaVu Sans Mono", Consolas, "Courier New", monospace;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+.casilla:focus {
+  outline: none;
+  border-color: var(--acento);
+  border-width: 2px;
+}
+
+.boton {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton--primario {
+  background: var(--acento);
+  color: #fff;
+}
+
+.boton--primario:hover:not(:disabled) {
+  background: #c8032a;
+}
+
+.boton--primario:disabled {
+  background: #eeb9c1;
+  cursor: not-allowed;
+}
+
+.boton--negro {
+  background: #1c1c1a;
+  color: #fff;
+}
+
+.boton--negro:hover {
+  background: #000;
+}
+
+.error {
+  color: var(--acento);
+  font-size: 13px;
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+.enlace-ayuda {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: var(--texto-secundario);
+  margin-top: 14px;
+  text-decoration: none;
+}
+
+.enlace-ayuda:hover {
+  color: var(--texto);
+  text-decoration: underline;
+}
+
+/* ---------- Pantalla 2: sesión encontrada ---------- */
+
+.panel--aviso {
+  background: #fbf3de;
+  border: 1px solid rgba(184, 134, 11, 0.35);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.aviso-encabezado {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.aviso-etiqueta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ambar);
+}
+
+.nombre-grande {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.texto-secundario {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  text-align: center;
+  margin: 4px 0 0;
+}
+
+.cuenta-regresiva {
+  font-size: 30px;
+  font-weight: 700;
+  color: #8a5a00;
+  text-align: center;
+  margin: 14px 0;
+}
+
+.texto-advertencia {
+  font-size: 12px;
+  color: #7a5c1e;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 0 16px;
+}
+
+/* ---------- Pantalla 3: conectado ---------- */
+
+.fila-estado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.estado-indicador {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.punto--verde { background: var(--verde); }
+.punto--ambar { background: var(--ambar); }
+.punto--roja { background: var(--acento); }
+.punto--gris { background: var(--texto-secundario); }
+
+.estado-texto {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--texto);
+}
+
+.nombre-negocio {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 13px 14px;
+  margin-bottom: 12px;
+}
+
+.tarjeta-titulo {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--texto-secundario);
+  margin-bottom: 10px;
+}
+
+.fila-equipo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.icono-chico {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--texto-secundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nombre-equipo-texto {
+  font-size: 14px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.pildora {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.pildora--verde {
+  background: rgba(47, 143, 91, 0.14);
+  color: var(--verde);
+}
+
+.pildora--roja {
+  background: rgba(228, 3, 46, 0.1);
+  color: var(--acento);
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fila-lista {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--borde);
+  font-size: 13px;
+}
+
+.fila-lista:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fila-lista:first-child {
+  padding-top: 0;
+}
+
+.fila-lista-principal {
+  flex: 1;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fila-lista-secundaria {
+  color: var(--texto-secundario);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.fila-lista-hora {
+  font-size: 12px;
+  color: var(--texto-secundario);
+  flex-shrink: 0;
+  width: 38px;
+}
+
+.lista-vacia {
+  color: var(--texto-secundario);
+  font-size: 12.5px;
+  line-height: 1.5;
+  padding: 2px 0;
+}
+
+.recuadro-punteado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 11px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--acento);
+  background: transparent;
+  border: 1.5px dashed rgba(228, 3, 46, 0.45);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.recuadro-punteado:hover {
+  background: rgba(228, 3, 46, 0.06);
+}
+
+/* ---------- Pantalla 4: sin conexión ---------- */
+
+.recuadro-info {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  padding: 12px 13px;
+  font-size: 12.5px;
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.recuadro-info strong {
+  color: var(--texto);
+}
+
+footer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.version {
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
