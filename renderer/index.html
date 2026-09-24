@@ -54,18 +54,19 @@
       <a id="link-ayuda" class="enlace-ayuda" href="#">¿Necesitas ayuda? Abrir guía</a>
     </section>
 
-    <section id="panel-arrancando" class="panel panel--aviso oculto">
-      <div class="aviso-encabezado">
-        <span class="punto punto--ambar"></span>
-        <span class="aviso-etiqueta mono">SESIÓN ENCONTRADA</span>
+    <section id="panel-arrancando" class="panel oculto">
+      <div class="panel--aviso">
+        <div class="aviso-encabezado">
+          <span class="punto punto--ambar"></span>
+          <span class="aviso-etiqueta mono">SESIÓN ENCONTRADA</span>
+        </div>
+        <p id="nombre-equipo-arranque" class="nombre-grande"></p>
+        <p id="negocio-arranque" class="texto-secundario oculto"></p>
+        <p id="cuenta-regresiva" class="cuenta-regresiva mono"></p>
+        <p class="texto-advertencia">
+          Si este NO es tu equipo, ciérralo ahora con el botón de abajo.
+        </p>
       </div>
-      <p id="nombre-equipo-arranque" class="nombre-grande mono"></p>
-      <p id="negocio-arranque" class="texto-secundario oculto"></p>
-      <p id="cuenta-regresiva" class="cuenta-regresiva mono"></p>
-      <p class="texto-advertencia">
-        Si este equipo o este negocio no son los correctos, ciérralo ahora
-        con el botón de abajo.
-      </p>
       <button id="btn-cerrar-aviso" class="boton boton--negro">Cerrar Koonta Print</button>
     </section>
 
@@ -73,7 +74,7 @@
       <div class="fila-estado">
         <span class="estado-indicador">
           <span id="estado-punto" class="punto punto--verde"></span>
-          <span id="estado-texto" class="estado-texto mono">CONECTADO</span>
+          <span id="estado-texto" class="estado-texto estado-texto--verde mono">CONECTADO</span>
         </span>
         <span id="nombre-negocio" class="nombre-negocio oculto"></span>
       </div>
@@ -88,7 +89,7 @@
             </svg>
           </span>
           <span id="nombre-equipo" class="nombre-equipo-texto"></span>
-          <span id="equipo-pildora" class="pildora pildora--verde">EN LÍNEA</span>
+          <span id="equipo-pildora" class="estado-plano mono">EN LÍNEA</span>
         </div>
       </div>
 
@@ -99,7 +100,7 @@
 
       <div class="tarjeta">
         <div class="tarjeta-titulo">ÚLTIMAS IMPRESIONES</div>
-        <ul id="lista-impresiones" class="lista"></ul>
+        <ul id="lista-impresiones" class="lista lista--impresiones"></ul>
       </div>
 
       <button id="btn-configurar" class="recuadro-punteado">

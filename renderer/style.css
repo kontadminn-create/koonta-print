@@ -292,11 +292,14 @@ body {
 
 /* ---------- Pantalla 2: sesión encontrada ---------- */
 
+/* La tarjeta ámbar lleva solo el aviso; el botón de cerrar va debajo,
+   afuera de la tarjeta, igual que en el UI kit. */
 .panel--aviso {
   background: #fbf3de;
   border: 1px solid rgba(184, 134, 11, 0.35);
   border-radius: 10px;
-  padding: 16px;
+  padding: 24px 16px;
+  margin-bottom: 14px;
 }
 
 .aviso-encabezado {
@@ -315,8 +318,9 @@ body {
 }
 
 .nombre-grande {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
+  text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.02em;
   margin: 0;
@@ -332,17 +336,17 @@ body {
 .cuenta-regresiva {
   font-size: 30px;
   font-weight: 700;
-  color: #8a5a00;
+  color: var(--ambar);
   text-align: center;
   margin: 14px 0;
 }
 
 .texto-advertencia {
   font-size: 12px;
-  color: #7a5c1e;
+  color: var(--texto-secundario);
   text-align: center;
-  line-height: 1.4;
-  margin: 0 0 16px;
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* ---------- Pantalla 3: conectado ---------- */
@@ -380,6 +384,16 @@ body {
   color: var(--texto);
 }
 
+.estado-texto--verde {
+  color: var(--verde);
+}
+
+.estado-plano {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--texto-secundario);
+}
+
 .nombre-negocio {
   font-size: 13px;
   color: var(--texto-secundario);
@@ -394,8 +408,9 @@ body {
 }
 
 .tarjeta-titulo {
-  font-size: 10.5px;
-  font-weight: 700;
+  font-family: "DejaVu Sans Mono", Consolas, "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 400;
   letter-spacing: 0.07em;
   color: var(--texto-secundario);
   margin-bottom: 10px;
@@ -422,6 +437,7 @@ body {
 .nombre-equipo-texto {
   font-size: 14px;
   font-weight: 700;
+  text-transform: uppercase;
   flex: 1;
 }
 
@@ -473,6 +489,15 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.fila-lista-principal--mayus {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.lista--impresiones .fila-lista-principal {
+  font-weight: 400;
 }
 
 .fila-lista-secundaria {

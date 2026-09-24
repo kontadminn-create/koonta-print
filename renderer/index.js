@@ -143,7 +143,14 @@ async function cargarImpresorasAsignadas() {
       .map(
         (imp) => `
           <li class="fila-lista">
-            <span class="fila-lista-principal">${escapeHtml(imp.nombreSistema)}</span>
+            <span class="icono-chico" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V3h12v6" />
+                <rect x="4" y="9" width="16" height="8" rx="1.5" />
+                <path d="M7 14h10v7H7z" />
+              </svg>
+            </span>
+            <span class="fila-lista-principal fila-lista-principal--mayus">${escapeHtml(imp.nombreSistema)}</span>
             <span class="fila-lista-secundaria">${escapeHtml(imp.zona)}</span>
             <span class="punto punto--verde"></span>
           </li>
